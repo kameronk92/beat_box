@@ -5,9 +5,13 @@ class LinkedList
     @head = nil
   end
 
-  def append(string)
-    if @data == nil
-    string = @data
+  def append(data)
+    if @head == nil
+      @head = Node.new(data)
+    elsif 
+      @head.node.next_node == nil
+      false
+    end
   end
 end
 
@@ -16,4 +20,3 @@ end
 
   # def to_string
   # end
-end
