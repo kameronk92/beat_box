@@ -2,16 +2,18 @@ class LinkedList
   attr_reader :head
   
   def initialize
-    @head = head
+    @head = nil
   end
 
-  def append
+  def append(string)
+    if @data == nil
+    string = @data
   end
-  
-  def count
-  end
+end
 
-  def to_string
-    
-  end
+  # def count
+  # end
+
+  # def to_string
+  # end
 end
