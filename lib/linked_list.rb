@@ -10,9 +10,6 @@ class LinkedList
     if @head.nil?
       @head = new_node
     else
-      # node = @head.next_node
-      # until node.next_node == nil
-      # false
       current_node = @head
       while !current_node.next_node.nil?
         current_node = current_node.next_node
@@ -20,10 +17,21 @@ class LinkedList
       current_node.next_node = new_node
     end
   end
+
+  def count
+    return 0 if @head == nil
+    count = 1
+    current_node = @head
+      while !current_node.next_node.nil?
+        count += 1
+        current_node = current_node.next_node
+      end
+      count
+  end
+  def to_string
+  end
 end
 
-  # def count
-  # end
 
-  # def to_string
-  # end
+
+
