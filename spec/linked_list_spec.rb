@@ -26,7 +26,6 @@ RSpec.describe LinkedList do
       list = LinkedList.new
       list.append("doop")
       node_2 = list.append("deep")
-
       expect(list.head.next_node).to eq(node_2)
     end
 
@@ -35,7 +34,9 @@ RSpec.describe LinkedList do
       list.append("doop")
       expect(list.head.next_node).to eq(nil)
     end
+  end
 
+  describe '#count' do
     it 'counts the number of nodes' do
       list = LinkedList.new
       expect(list.count).to eq(0)
@@ -44,13 +45,25 @@ RSpec.describe LinkedList do
       list.append("skrrrp")
       expect(list.count).to eq(2)
     end
+  end
 
+  describe '#to_string' do
     it 'can output the list to a string' do
-    list = LinkedList.new
-    list.append("doop")
-    expect(list.to_string).to eq ("doop")
-    list.append("skrrrp")
-    expect(list.to_string).to eq("doop skrrrp")
+      list = LinkedList.new
+      list.append("doop")
+      expect(list.to_string).to eq ("doop")
+      list.append("skrrrp")
+      expect(list.to_string).to eq("doop skrrrp")
+    end
+  end
+
+  describe '#prepend' do
+    it 'becomes the head'do
+      list = LinkedList.new
+      node_1 = list.prepend("doop")
+      expect(list.head).to eq (node_1)
+      node_2 = list.prepend("skrrrp")
+      expect(list.head).to eq(node_2)
     end
   end
 end
