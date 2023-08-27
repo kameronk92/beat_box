@@ -39,6 +39,28 @@ class LinkedList
     end
     return string
   end
+
+  def prepend(data)
+    new_node = Node.new(data)
+    if @head.nil?
+      @head = new_node
+    else
+      prev_head = @head
+      new_node.next_node = @head
+      @head = new_node
+    end
+  end
+
+  def find(data)
+    node = self.head
+    while(!node.nil?)
+      if(node.data == data)
+        return true
+      end
+      node = node.next_node
+    end
+    "sorry kid, it ain't here"
+  end
 end
 
 
