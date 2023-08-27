@@ -51,6 +51,34 @@ class LinkedList
     end
   end
 
+  def pop
+    return "sorry boss, nothing to pop" if @head == nil
+    current_node = @head
+    if current_node.next_node == nil
+      current_node.data == nil
+      while !current_node.next_node.nil?
+        current_node = current_node.next_node
+      end
+      current_node.data = nil
+  end
+
+  # def remove(data)
+  #   return "list is already empty, boss" if @head == nil
+  #   node = @head
+  #   prev_node = nil
+  #   until(node.nil?)
+  #     if(node.data == data)
+  #       if !prev_node.nil?
+  #         prev_node.next_node = node.next_node
+  #       else
+  #         @head = nil
+  #     end
+  #     prev_node = node
+  #     node = node.new_node
+  #   end
+  #   "sorry kid, nothing to remove"
+  # end
+
   def find(data)
     node = self.head
     while(!node.nil?)
