@@ -66,4 +66,26 @@ RSpec.describe LinkedList do
       expect(list.head).to eq(node_2)
     end
   end
+
+  describe '#pop' do
+    it 'without nodes, returns error message'do
+      list = LinkedList.new
+      expect(list.pop).to eq ("sorry boss, nothing to pop")
+    end
+
+    it 'with one node, removes head node' do
+      list = LinkedList.new
+      node_1 = list.prepend("doop")
+      list.pop
+      expect(list.head).to eq(nil)
+    end
+
+    it 'with multiple nodes, removes last node' do
+      list = LinkedList.new
+      node_1 = list.prepend("doop")
+      node_2 = list.prepend("skrrrp")
+      list.pop
+      expect(list.count).to eq(1)
+    end
+  end
 end

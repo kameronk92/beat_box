@@ -96,10 +96,10 @@ class LinkedList
 end
 
 
-require "./lib/node.rb"
-list = LinkedList.new
-list.append("bippity")
-list.append("skipity")
-require 'pry'; binding.pry
+# require "./lib/node.rb"
+# list = LinkedList.new
+# list.append("bippity")
+# list.append("skipity")
+# require 'pry'; binding.pry
 
 
