@@ -65,15 +65,43 @@ class LinkedList
     end
   end
 
-  def find(data)
-    node = self.head
+  def find(index, num_nodes)
+    return "sorry boss, nothing here" if @head == nil
+    count = 1
+    current_node = @head
+    find_result = []
+      until count == index
+        count += 1
+        current_node = current_node.next_node
+      end
+      (num_nodes).times do #how to make this not break with too many nodes?
+        find_result << current_node.data
+        current_node = current_node.next_node
+      end
+    find_result.join(" ")
+  end
+
+  def includes?(data)
+    return "*cricket noises*" if @head == nil
+    node = @head
     while(!node.nil?)
       if(node.data == data)
         return true
       end
       node = node.next_node
     end
-    "sorry kid, it ain't here"
+    "#{data}? never heard of em."
+  end
+
+  def to_string
+    return "string? you don't even have a thread" if @head == nil
+    string = []
+    current_node = @head
+      while !current_node.nil? #why can't I use !current_node.data.nil?
+        string << current_node.data
+        current_node = current_node.next_node
+      end
+      string.join(" ")
   end
 
   # def remove(data)
@@ -96,10 +124,13 @@ class LinkedList
 end
 
 
-# require "./lib/node.rb"
-# list = LinkedList.new
-# list.append("bippity")
-# list.append("skipity")
-# require 'pry'; binding.pry
+require "./lib/node.rb"
+list = LinkedList.new
+list.append("deep")
+list.append("woo")
+list.append("shi")
+list.append("shu")
+list.append("blop")
+require 'pry'; binding.pry
 
 

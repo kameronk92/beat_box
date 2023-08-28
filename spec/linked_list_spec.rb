@@ -29,7 +29,7 @@ RSpec.describe LinkedList do
       expect(list.head.next_node).to eq(node_2)
     end
 
-    it 'without another node, head points to nil' do
+    it 'without another node, head points to nil' do #does this test belong somewhere else?
       list = LinkedList.new
       list.append("doop")
       expect(list.head.next_node).to eq(nil)
