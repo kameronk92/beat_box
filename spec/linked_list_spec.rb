@@ -15,11 +15,18 @@ RSpec.describe LinkedList do
     end
   end
 
-  describe '#apend' do
+  describe '#append' do
     it 'without a head, creates a new head Node' do
       list = LinkedList.new
       list.append("doop")
+      expect(list.head).to be_instance_of(Node)
       expect(list.head.data).to eq("doop")
+    end
+    
+    it 'without another node, head points to nil' do #does this test belong somewhere else?
+      list = LinkedList.new
+      list.append("doop")
+      expect(list.head.next_node).to eq(nil)
     end
 
     it 'can append node to list that is not empty' do
@@ -27,12 +34,6 @@ RSpec.describe LinkedList do
       list.append("doop")
       node_2 = list.append("deep")
       expect(list.head.next_node).to eq(node_2)
-    end
-
-    it 'without another node, head points to nil' do #does this test belong somewhere else?
-      list = LinkedList.new
-      list.append("doop")
-      expect(list.head.next_node).to eq(nil)
     end
   end
 
@@ -42,7 +43,7 @@ RSpec.describe LinkedList do
       expect(list.count).to eq(0)
       list.append("doop")
       expect(list.count).to eq(1)
-      list.append("skrrrp")
+      list.append("deep")
       expect(list.count).to eq(2)
     end
   end
@@ -52,8 +53,8 @@ RSpec.describe LinkedList do
       list = LinkedList.new
       list.append("doop")
       expect(list.to_string).to eq ("doop")
-      list.append("skrrrp")
-      expect(list.to_string).to eq("doop skrrrp")
+      list.append("deep")
+      expect(list.to_string).to eq("doop deep")
     end
   end
 
@@ -67,6 +68,42 @@ RSpec.describe LinkedList do
     end
   end
 
+  describe '#insert' do
+    it 'places a new Node at specified index' do
+      list = LinkedList.new
+      node_1 = list.apend("dop")
+      node_2 = list.apend("plop")
+      node_3 = list.apend("suu")
+      node_3 = list.insert(1, "woo")
+      expect(list.to_string).to eq("dop woo plop suu") #is there a better way of isolating this test?
+  end
+
+  describe '#find' do
+    it 'uses index position and number of nodes to return a string' do
+      list = LinkedList.new
+      node_1 = list.apend("deep")
+      node_2 = list.apend("woo")
+      node_3 = list.apend("shi")
+      node_4 = list.apend("shu")
+      node_5 = list.apend("blop")
+      expect(list.find(2,1)).to eq("shi")
+      expect(list.find(1.3)).to eq("woo shi shu")
+    end
+  end
+
+  describe 'includes?' do
+    it 'looks for argument in list and returns boolean' do
+      list = LinkedList.new
+      node_1 = list.apend("deep")
+      node_2 = list.apend("woo")
+      node_3 = list.apend("shi")
+      node_4 = list.apend("shu")
+      node_5 = list.apend("blop")
+      expect(list.includes?("deep")).to eq(true)
+      expect(list.includes?("dep")). to eq(false)
+    end
+  end
+  
   describe '#pop' do
     it 'without nodes, returns error message'do
       list = LinkedList.new

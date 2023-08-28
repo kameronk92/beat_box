@@ -51,6 +51,24 @@ class LinkedList
     end
   end
 
+  def insert(index, data)
+    new_node = Node.new(data)
+    if @head.nil?
+      @head = new_node
+    elsif
+    index == 0
+      new_node.next_node = @head
+      @head = new_node
+    else
+      current_node = @head
+      (index-1).times do
+        current_node = current_node.next_node
+        new_node.next_node = current_node.next_node #why doesn't it do all this while iterating?
+        current_node.next_node = new_node
+      end
+    end
+  end
+
   def pop
     return "sorry boss, nothing to pop" if @head == nil
     current_node = @head
@@ -131,6 +149,7 @@ list.append("woo")
 list.append("shi")
 list.append("shu")
 list.append("blop")
-require 'pry'; binding.pry
+list.insert(4, "skap")
+list.to_string
 
 
