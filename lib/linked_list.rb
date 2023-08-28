@@ -85,7 +85,7 @@ class LinkedList
 
   def find(index, num_nodes)
     return "sorry boss, nothing here" if @head == nil
-    count = 1
+    count = 0
     current_node = @head
     find_result = []
       until count == index
