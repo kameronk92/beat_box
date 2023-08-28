@@ -63,9 +63,9 @@ class LinkedList
       current_node = @head
       (index-1).times do
         current_node = current_node.next_node
-        new_node.next_node = current_node.next_node #why doesn't it do all this while iterating?
-        current_node.next_node = new_node
       end
+        new_node.next_node = current_node.next_node
+        current_node.next_node = new_node
     end
   end
 
@@ -140,16 +140,3 @@ class LinkedList
   # end
 
 end
-
-
-require "./lib/node.rb"
-list = LinkedList.new
-list.append("deep")
-list.append("woo")
-list.append("shi")
-list.append("shu")
-list.append("blop")
-list.insert(4, "skap")
-list.to_string
-
-

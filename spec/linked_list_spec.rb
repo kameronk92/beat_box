@@ -1,6 +1,5 @@
 require "./lib/linked_list"
 require "./lib/node"
-require 'pry'
 
 RSpec.describe LinkedList do
   describe '#initialize' do
@@ -71,21 +70,22 @@ RSpec.describe LinkedList do
   describe '#insert' do
     it 'places a new Node at specified index' do
       list = LinkedList.new
-      node_1 = list.apend("dop")
-      node_2 = list.apend("plop")
-      node_3 = list.apend("suu")
+      node_1 = list.append("dop")
+      node_2 = list.append("plop")
+      node_3 = list.append("suu")
       node_3 = list.insert(1, "woo")
       expect(list.to_string).to eq("dop woo plop suu") #is there a better way of isolating this test?
+    end
   end
 
   describe '#find' do
     it 'uses index position and number of nodes to return a string' do
       list = LinkedList.new
-      node_1 = list.apend("deep")
-      node_2 = list.apend("woo")
-      node_3 = list.apend("shi")
-      node_4 = list.apend("shu")
-      node_5 = list.apend("blop")
+      node_1 = list.append("deep")
+      node_2 = list.append("woo")
+      node_3 = list.append("shi")
+      node_4 = list.append("shu")
+      node_5 = list.append("blop")
       expect(list.find(2,1)).to eq("shi")
       expect(list.find(1.3)).to eq("woo shi shu")
     end
@@ -94,16 +94,16 @@ RSpec.describe LinkedList do
   describe 'includes?' do
     it 'looks for argument in list and returns boolean' do
       list = LinkedList.new
-      node_1 = list.apend("deep")
-      node_2 = list.apend("woo")
-      node_3 = list.apend("shi")
-      node_4 = list.apend("shu")
-      node_5 = list.apend("blop")
+      node_1 = list.append("deep")
+      node_2 = list.append("woo")
+      node_3 = list.append("shi")
+      node_4 = list.append("shu")
+      node_5 = list.append("blop")
       expect(list.includes?("deep")).to eq(true)
-      expect(list.includes?("dep")). to eq(false)
+      expect(list.includes?("dep")). to eq("dep? never heard of em.")
     end
   end
-  
+
   describe '#pop' do
     it 'without nodes, returns error message'do
       list = LinkedList.new
