@@ -33,7 +33,7 @@ class LinkedList
     return "add some nodes first, my dude" if @head == nil
     current_node = @head
     string = current_node.data
-    while !current_node.next_node.nil?
+    until current_node.next_node.nil?
       current_node = current_node.next_node
       string = string + " " + current_node.data
     end
@@ -84,42 +84,31 @@ class LinkedList
   end
 
   def find(index, num_nodes)
-    return "sorry boss, nothing here" if @head == nil
+    return "try again" if !@head || index < 0 || index >= self.count || index + num_nodes > self.count
     count = 0
     current_node = @head
-    find_result = []
+    find_result = ''
       until count == index
         count += 1
         current_node = current_node.next_node
       end
-      (num_nodes).times do #how to make this not break with too many nodes?
-        find_result << current_node.data
+      num_nodes.times do
+        find_result = find_result + ' ' + current_node.data
         current_node = current_node.next_node
       end
-    find_result.join(" ")
+    find_result.strip
   end
 
   def includes?(data)
     return "*cricket noises*" if @head == nil
     node = @head
-    while(!node.nil?)
+    until(node.nil?)
       if(node.data == data)
         return true
       end
       node = node.next_node
     end
     "#{data}? never heard of em."
-  end
-
-  def to_string
-    return "string? you don't even have a thread" if @head == nil
-    string = []
-    current_node = @head
-      while !current_node.nil? #why can't I use !current_node.data.nil?
-        string << current_node.data
-        current_node = current_node.next_node
-      end
-      string.join(" ")
   end
 
   # def remove(data)
