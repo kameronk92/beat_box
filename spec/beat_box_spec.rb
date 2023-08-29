@@ -28,6 +28,7 @@ RSpec.describe BeatBox do
     it 'can add next nodes to list' do
       bb = BeatBox.new
       bb.append("deep doo ditt")
+      bb.play
       expect(bb.list.head.next_node.data).to eq('doo')
     end
   end
@@ -45,8 +46,15 @@ RSpec.describe BeatBox do
     it 'can play the beat stored in the LinkedList' do 
       bb = BeatBox.new
       bb.append("deep doo ditt woo hoo shu")
+      expect(bb).to receive(:`).with('say -r 500 -v Cello deep doo ditt woo hoo shu')
       bb.play
-      expect(bb.play).not_to raise_error
+    end
+  end
+
+  describe '#remix' do
+    it 'accepts attributes for speed and voice'do
+      bb = BeatBox.new
+      bb.append("deep doo ditt woo hoo shu")
     end
   end
 end

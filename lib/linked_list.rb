@@ -7,7 +7,7 @@ class LinkedList
 
   def append(data)
     new_node = Node.new(data)
-    acceptables = ['tee', 'dee', 'deep', 'bop', 'boop', 'la', 'na', 'doop', 'suu,', 'dop', 'woo', 'plop', 'shi', 'shu', 'blop', 'ditt','hoo', 'ding', 'dah', 'oom', 'skrrrp', 'suu'] 
+    acceptables = ['tee', 'dee', 'deep', 'bop', 'boop', 'la', 'na', 'doop', 'suu,', 'dop', 'woo', 'plop', 'shi', 'shu', 'blop', 'ditt','hoo', 'ding', 'dah', 'oom', 'skrrrp', 'suu', 'doo'] 
     return "try again" if !acceptables.include?(data)
     if @head.nil?
       @head = new_node
