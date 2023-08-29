@@ -20,4 +20,8 @@ class BeatBox
     beats = @list.to_string
     `say -r 500 -v Cello #{beats}`
   end
+
+  def remix(rate, voice)
+    `say -r #{speed} -v #{voice} #{beats}`
+  end
 end

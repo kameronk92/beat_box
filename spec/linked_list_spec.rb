@@ -22,7 +22,7 @@ RSpec.describe LinkedList do
       expect(list.head.data).to eq("doop")
     end
     
-    it 'without another node, head points to nil' do #does this test belong somewhere else?
+    it 'without another node, head points to nil' do
       list = LinkedList.new
       list.append("doop")
       expect(list.head.next_node).to eq(nil)
@@ -33,6 +33,12 @@ RSpec.describe LinkedList do
       list.append("doop")
       node_2 = list.append("deep")
       expect(list.head.next_node).to eq(node_2)
+    end
+
+    it 'rejects beats that are not phat' do
+      list = LinkedList.new
+      list.append("mississippi")
+      expect(list.append("mississippi")).to eq('try again') # I think there's a better way to write this
     end
   end
 
@@ -88,6 +94,16 @@ RSpec.describe LinkedList do
       node_5 = list.append("blop")
       expect(list.find(2,1)).to eq("shi")
       expect(list.find(1,3)).to eq("woo shi shu")
+    end
+
+    it 'rejects queries that are too long' do
+    list = LinkedList.new
+      node_1 = list.append("deep")
+      node_2 = list.append("woo")
+      node_3 = list.append("shi")
+      node_4 = list.append("shu")
+      node_5 = list.append("blop")
+      expect(list.find(1,100)).to eq("try again")
     end
   end
 

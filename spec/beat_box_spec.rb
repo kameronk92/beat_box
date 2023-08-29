@@ -41,5 +41,12 @@ RSpec.describe BeatBox do
     end
   end
 
-    # expect(bb.play).not_to raise_error
+  describe '#play' do
+    it 'can play the beat stored in the LinkedList' do 
+      bb = BeatBox.new
+      bb.append("deep doo ditt woo hoo shu")
+      bb.play
+      expect(bb.play).not_to raise_error
+    end
+  end
 end
