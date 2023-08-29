@@ -52,9 +52,12 @@ RSpec.describe BeatBox do
   end
 
   describe '#remix' do
-    it 'accepts attributes for speed and voice'do
+    it 'accepts attributes for speed and voice' do
       bb = BeatBox.new
       bb.append("deep doo ditt woo hoo shu")
+      bb.remix(100, 'Organ')
+      expect(bb).to receive(:`).with('say -r 100 -v Organ deep doo ditt woo hoo shu')
+      bb.remix(100, 'Organ')
     end
   end
 end
